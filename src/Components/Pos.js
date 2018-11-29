@@ -1,20 +1,14 @@
 import React, { Component } from "react";
+import firebase from "./firebase";
+
+
+const dbRef = firebase.database().ref();
 
 class Pos extends Component {
-  constructor(){
-    super();
-    this.state = {
-
-    }
-  }
-
-  
-  render(){
-    return(
+  render() {
+    return (
       <div>
-        <h1>
-          POS
-        </h1>
+        <h1>POS</h1>
       </div>
     )
   }

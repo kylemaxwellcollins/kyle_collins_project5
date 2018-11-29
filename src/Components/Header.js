@@ -1,34 +1,34 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
-
+import Inventory from "./Inventory";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
-
   render() {
     return (
-      <Router>
-        <header>
-          <div className="wrapper">
-            <div className="headerContainer">
-              <h1>Inventory Manager</h1>
-              <nav>
-                <ul>
-                  <li>
-                    <NavLink to="/inventory">Inventory</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="pos">P.O.S</NavLink>
-                  </li>
-                </ul>
-              </nav>  
-            </div>
+      <header>
+        <div className="wrapper">
+          <div className="headerContainer">
+            <h1>
+              <Link to="/">Inventory Manager</Link>
+            </h1>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/inventory">Inventory</Link>
+                </li>
+                <li>
+                  <Link to="/pos">P.O.S</Link>
+                </li>
+                {/* <li>
+                  <Link to="/home">Home</Link>
+                </li> */}
+              </ul>
+            </nav>
           </div>
-        </header>
-      </Router>
+        </div>
+      </header>
     );
   }
 }
-
-
 
 export default Header;

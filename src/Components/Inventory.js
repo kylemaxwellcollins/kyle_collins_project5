@@ -1,77 +1,86 @@
 import React, { Component } from "react";
-import firebase from "./firebase";
+// import firebase from "./firebase";
+
+//// ADD ITEM
+// store values in state
+// update state when user types in the input
+// on submit create new object with entered data
+// send new object to firebase
+// empty state
+// render items to the page
 
 
-const dbRef = firebase.database().ref();
+
+// const dbRef = firebase.database().ref();
 
 class Inventory extends Component {
   constructor() {
     super();
     this.state = {
-      inventoryItems: {},
-      itemName: "",
-      itemPrice: "",
-      itemQuantity: "",
-      itemDescription: "",
-      itemImage: ""
+      // inventoryItems: {},
+      // itemName: "",
+      // itemPrice: "",
+      // itemQuantity: "",
+      // itemDescription: "",
+      // itemImage: ""
     };
   }
 
-  componentDidMount() {
-    console.log("mounted");
+  // componentDidMount() {
+  //   console.log("mounted");
 
-    dbRef.on("value", snapshot => {
-      const newInventory = snapshot.val() === null ? {} : snapshot.val();
-      this.setState({ inventoryItems: newInventory });
-    });
-  }
+  //   dbRef.on("value", snapshot => {
+  //     const newInventory = snapshot.val() === null ? {} : snapshot.val();
+  //     this.setState({ inventoryItems: newInventory });
+  //   });
+  // }
 
-  handleChange = e => {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-  };
+  // handleChange = e => {
+  //   this.setState({
+  //     [e.target.id]: e.target.value
+  //   });
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
-    const newItem = {
-      itemName: this.state.itemName,
-      itemPrice: this.state.itemPrice,
-      itemQuantity: this.state.itemQuantity,
-      itemDescription: this.state.itemDescription,
-      itemImage: this.state.itemImage
+    // const newItem = {
+    //   itemName: this.state.itemName,
+    //   itemPrice: this.state.itemPrice,
+    //   itemQuantity: this.state.itemQuantity,
+    //   itemDescription: this.state.itemDescription,
+    //   itemImage: this.state.itemImage
     };
 
-    // If inputs are blank, show error message
+  //   // If inputs are blank, show error message
 
-    dbRef.push(newItem);
+  //   dbRef.push(newItem);
 
-    this.setState({
-      itemName: "",
-      itemPrice: "",
-      itemQuantity: "",
-      itemDescription: "",
-      itemImage: ""
-    });
-  };
+  //   this.setState({
+  //     itemName: "",
+  //     itemPrice: "",
+  //     itemQuantity: "",
+  //     itemDescription: "",
+  //     itemImage: ""
+  //   });
+  // };
 
-  removeItem = e => {
-    const firebaseKey = e.target.id;
-    const itemRef = firebase.database().ref(`/${firebaseKey}`);
-    itemRef.remove();
-  };
+  // removeItem = e => {
+  //   const firebaseKey = e.target.id;
+  //   const itemRef = firebase.database().ref(`/${firebaseKey}`);
+  //   itemRef.remove();
+  // };
 
   render() {
     return (
       <div>
         {/* <AddItem /> */}
-        <form action="" onSubmit={this.handleSubmit}>
+        <form action="" onSubmit={this.props.handleSubmit}>
           <label className="visuallyhidden" htmlFor="itemName">
             Item Name:
           </label>
           <input
-            onChange={this.handleChange}
-            value={this.state.itemName}
+            onChange={this.props.handleChange}
+            value={this.props.itemName}
             type="text"
             id="itemName"
             className="itemName"
@@ -82,8 +91,9 @@ class Inventory extends Component {
             Item Price:
           </label>
           <input
-            onChange={this.handleChange}
-            value={this.state.itemPrice}
+            // onChange={this.props.handleChange}
+            onChange={this.props.inventoryItems}
+            value={this.props.itemPrice}
             type="number"
             id="itemPrice"
             className="itemPrice"
@@ -97,8 +107,8 @@ class Inventory extends Component {
             Quantity:
           </label>
           <input
-            onChange={this.handleChange}
-            value={this.state.itemQuantity}
+            onChange={this.props.handleChange}
+            value={this.props.itemQuantity}
             type="number"
             id="itemQuantity"
             className="itemQuantity"
@@ -109,8 +119,8 @@ class Inventory extends Component {
             Description:
           </label>
           <input
-            onChange={this.handleChange}
-            value={this.state.itemDescription}
+            onChange={this.props.handleChange}
+            value={this.props.itemDescription}
             type="text"
             id="itemDescription"
             className="itemDescription"
@@ -121,8 +131,8 @@ class Inventory extends Component {
             Image:
           </label>
           <input
-            onChange={this.handleChange}
-            value={this.state.itemImage}
+            onChange={this.props.handleChange}
+            value={this.props.itemImage}
             type="text"
             id="itemImage"
             className="itemImage"
@@ -132,7 +142,7 @@ class Inventory extends Component {
           <input className="addItem" type="submit" value="Add Item" />
         </form>
         <section>
-          {Object.entries(this.state.inventoryItems).map(item => {
+          {Object.entries(this.props.inventoryItems).map(item => {
             return (
               <div key={item[0]} className="inventoryItem ">
                 <h2>{item[1].itemName}</h2>
@@ -140,7 +150,7 @@ class Inventory extends Component {
                 <p>Quantity: {item[1].itemQuantity}</p>
                 <p>Description: {item[1].itemDescription}</p>
                 <p>Image: {item[1].itemImage}</p>
-                <button id={item[0]} onClick={this.removeItem}>
+                <button id={item[0]} onClick={this.props.removeItem}>
                   Remove Item
                 </button>
               </div>
