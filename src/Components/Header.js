@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Inventory from "./Inventory";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
@@ -19,9 +18,6 @@ class Header extends Component {
                 <li>
                   <Link to="/pos">P.O.S</Link>
                 </li>
-                {/* <li>
-                  <Link to="/home">Home</Link>
-                </li> */}
               </ul>
             </nav>
           </div>

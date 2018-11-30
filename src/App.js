@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import firebase from "./Components/firebase";
 import "./App.css";
 import Home from "./Components/Home";
 import Header from "./Components/Header";
 import Inventory from "./Components/Inventory";
 import Pos from "./Components/Pos";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import firebase from "./Components/firebase";
 
 const dbRef = firebase.database().ref();
 
@@ -14,11 +14,14 @@ class App extends Component {
     super();
     this.state = {
       inventoryItems: {},
-      itemName: "",
-      itemPrice: "",
-      itemQuantity: "",
-      itemDescription: "",
-      itemImage: ""
+      formState: {
+        itemName: "",
+        itemPrice: "",
+        itemQuantity: "",
+        itemDescription: "",
+        itemImage: ""
+      },
+      cartState: []
     };
   }
 
@@ -33,30 +36,28 @@ class App extends Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.id]: e.target.value
+      formState: {
+        ...this.state.formState,
+        [e.target.id]: e.target.value
+      }
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const newItem = {
-      itemName: this.state.itemName,
-      itemPrice: this.state.itemPrice,
-      itemQuantity: this.state.itemQuantity,
-      itemDescription: this.state.itemDescription,
-      itemImage: this.state.itemImage
-    };
 
     // If inputs are blank, show error message
 
-    dbRef.push(newItem);
+    dbRef.push(this.state.formState);
 
     this.setState({
-      itemName: "",
-      itemPrice: "",
-      itemQuantity: "",
-      itemDescription: "",
-      itemImage: ""
+      formState: {
+        itemName: "",
+        itemPrice: "",
+        itemQuantity: "",
+        itemDescription: "",
+        itemImage: ""
+      }
     });
   };
 
@@ -64,6 +65,19 @@ class App extends Component {
     const firebaseKey = e.target.id;
     const itemRef = firebase.database().ref(`/${firebaseKey}`);
     itemRef.remove();
+  };
+
+  addToCart = e => {
+    // e.preventDefault();
+    const item = this.state.inventoryItems[e.target.id];
+    const cartItems = [...this.state.cartState];
+    cartItems.push(item);
+    this.setState(
+      {
+        cartState: cartItems
+      },
+      () => console.log(this.state.cartState)
+    );
   };
 
   render() {
@@ -81,6 +95,7 @@ class App extends Component {
                   handleChange={this.handleChange}
                   handleSubmit={this.handleSubmit}
                   removeItem={this.removeItem}
+                  formState={this.state.formState}
                   inventoryItems={this.state.inventoryItems}
                 />
               )}
@@ -88,7 +103,13 @@ class App extends Component {
 
             <Route
               path="/pos"
-              render={() => <Pos inventoryItems={this.state.inventoryItems} />}
+              render={() => (
+                <Pos
+                  inventoryItems={this.state.inventoryItems}
+                  cartState={this.state.cartState}
+                  addToCart={this.addToCart}
+                />
+              )}
             />
           </Switch>
         </div>
