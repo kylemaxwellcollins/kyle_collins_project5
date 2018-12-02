@@ -21,7 +21,9 @@ class App extends Component {
         itemDescription: "",
         itemImage: ""
       },
-      cartState: []
+      cartState: [],
+      cartPrices: [],
+      cartTotal: ""
     };
   }
 
@@ -68,16 +70,45 @@ class App extends Component {
   };
 
   addToCart = e => {
-    // e.preventDefault();
     const item = this.state.inventoryItems[e.target.id];
     const cartItems = [...this.state.cartState];
+    const prices = [...this.state.cartPrices];
+
     cartItems.push(item);
+
+    // cartItem = cartItems[e.target.id]
+    // cartItems[e.target.id] = item
+
+    prices.push(parseInt(item.itemPrice));
+
+    const total = this.state.cartPrices.reduce(
+      (a, b) => a + b,
+      parseFloat(item.itemPrice)
+    );
+
+    const updateInventory = Object.assign({}, this.state.inventoryItems);
+    updateInventory[e.target.id].itemQuantity--;
+
     this.setState(
       {
-        cartState: cartItems
-      },
-      () => console.log(this.state.cartState)
+        inventoryItems: updateInventory,
+        cartState: cartItems,
+        cartPrices: prices,
+        cartTotal: total
+      }
+      // () => console.log(this.state.cartState)
     );
+  };
+
+  deleteFromCart = () => {};
+
+  process = () => {
+    dbRef.update(this.state.inventoryItems);
+    this.setState({
+      cartState: [],
+      cartTotal: ""
+    });
+    // console.log(this.state.inventoryItems)
   };
 
   render() {
@@ -108,6 +139,10 @@ class App extends Component {
                   inventoryItems={this.state.inventoryItems}
                   cartState={this.state.cartState}
                   addToCart={this.addToCart}
+                  cartPrices={this.state.cartPrices}
+                  deleteFromCart={this.deleteFromCart}
+                  cartTotal={this.state.cartTotal}
+                  process={this.process}
                 />
               )}
             />

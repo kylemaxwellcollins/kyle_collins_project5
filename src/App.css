@@ -236,10 +236,7 @@ header h1 a {
 
 form {
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
-  /* max-width: 800px; */
-  /* width: 80%; */
   margin: 40px auto 0;
 }
 
@@ -265,17 +262,14 @@ form input {
   border-top: none;
 }
 
-.inventoryContainer {
-  /* display: flex;
-  flex-wrap: wrap; */
-}
-
 .inventoryItem {
-  /* height:100%;
-  width: 50%; */
   padding-top: 10px;
   margin: 40px 0;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.inventoryItem p {
+  overflow: scroll;
 }
 
 .removeItem {
@@ -286,11 +280,15 @@ form input {
 }
 
 /* PRODUCT STYLES */
+.posContainer {
+  display: flex;
+}
+
 .products {
   display: flex;
   width: 50%;
-  
   flex-wrap: wrap;
+  align-content: start;
 }
 
 .product {
@@ -301,8 +299,6 @@ form input {
   height: 300px;
   width: 50%;
   padding: 10px 0;
-  /* margin: 10px; */
-  /* border: 1px solid rgba(0, 0, 0, 0.2); */
 }
 
 .product p {
@@ -312,4 +308,49 @@ form input {
 .productImage {
   height: 50%;
   object-fit: contain;
+}
+/* CART STYLES */
+.cart {
+  margin: 20px;
+  width: 50%;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 80vh;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95%;
+}
+
+.cartItems {
+  overflow: scroll;
+  height: 65vh;
+}
+
+.total {
+  align-self: end;
+  margin-right: 45px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+}
+
+.cartItem p {
+  margin: 0;
+}
+
+.cartItem p:first-of-type {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.deleteFromCart {
+  background: none;
+  border: none;
+  height: 20px;
 }
