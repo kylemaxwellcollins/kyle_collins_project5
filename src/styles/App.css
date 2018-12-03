@@ -239,7 +239,8 @@ p {
     width: 100%;
     border-top: none; }
   .btn--login {
-    margin-top: 20px; }
+    margin-top: 20px;
+    padding: 5px 0; }
 
 header {
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); }
