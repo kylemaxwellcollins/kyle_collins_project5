@@ -3,14 +3,22 @@ import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
-    return <header>
+    return (
+      <header>
         <div className="wrapper">
           <div className="headerContainer">
-            <h1>
-              <Link to="/" className="heading">
-                Inventory Manager
-              </Link>
-            </h1>
+            <div className="logoContainer">
+              <img
+                src={require("../assets/noun_Stock_64261.svg")}
+                alt="brand logo"
+                className="logo"
+              />
+              <h1>
+                <Link to="/" className="heading">
+                  Stockpile
+                </Link>
+              </h1>
+            </div>
             <nav>
               <ul>
                 <li>
@@ -27,7 +35,8 @@ class Header extends Component {
             </nav>
           </div>
         </div>
-      </header>;
+      </header>
+    );
   }
 }
 

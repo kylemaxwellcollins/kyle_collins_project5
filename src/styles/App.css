@@ -266,6 +266,12 @@ header a {
 header h1 a {
   padding: 0; }
 
+.logoContainer {
+  display: flex; }
+  .logoContainer .logo {
+    width: 50px;
+    margin-right: 10px; }
+
 @media (max-width: 730px) {
   .headerContainer {
     flex-direction: column;
