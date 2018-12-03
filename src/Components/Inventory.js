@@ -4,7 +4,7 @@ class Inventory extends Component {
   render() {
     return (
       <div className="wrapper">
-        <form action="" onSubmit={this.props.handleSubmit}>
+        <form className="form form--inventory" action="" onSubmit={this.props.handleSubmit}>
           <label className="visuallyhidden" htmlFor="itemName">
             Item Name:
           </label>

@@ -6,7 +6,7 @@ class Header extends Component {
     return <header>
         <div className="wrapper">
           <div className="headerContainer">
-            <h1 className="heading">
+            <h1>
               <Link to="/" className="heading">
                 Inventory Manager
               </Link>

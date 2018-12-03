@@ -203,6 +203,18 @@ p {
   line-height: 32px;
   margin: 0; }
 
+@media (max-width: 730px) {
+  .wrapper {
+    width: 90%; }
+  .heading {
+    font-family: "Oswald", sans-serif;
+    color: #171717;
+    font-size: 30px;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fafafa; } }
+
 .btn {
   font-family: "Oswald", sans-serif;
   color: #171717;
@@ -211,9 +223,9 @@ p {
   text-transform: uppercase;
   letter-spacing: 1px;
   background: #195b7e;
-  color: #fafafa; }
+  color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
   .btn--general {
-    border: 1px solid rgba(0, 0, 0, 0.2);
     color: white;
     padding: 5px 20px; }
     .btn--general:disabled {
@@ -226,6 +238,8 @@ p {
   .btn--add {
     width: 100%;
     border-top: none; }
+  .btn--login {
+    margin-top: 20px; }
 
 header {
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); }
@@ -242,7 +256,7 @@ header ul {
 
 header li {
   list-style: none;
-  display: inline-block; }
+  display: inline; }
 
 header a {
   padding: 20px;
@@ -252,12 +266,30 @@ header a {
 header h1 a {
   padding: 0; }
 
+@media (max-width: 730px) {
+  .headerContainer {
+    flex-direction: column;
+    justify-content: space-evenly; } }
+
 .homePage {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(16, 66, 95, 0.7)), url("../assets/samuel-zeller-118195-unsplash.jpg") center;
   background-size: cover;
-  height: 90vh; }
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
-form {
+.form--login {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 90%;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px; }
+  .form--login input {
+    margin-bottom: 20px; }
+
+.form--inventory {
   display: flex;
   flex-wrap: wrap;
   margin: 40px auto 0; }
@@ -270,6 +302,10 @@ form input {
   line-height: 32px;
   padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2); }
+
+.inventoryContainer {
+  display: flex;
+  flex-direction: column-reverse; }
 
 .itemName {
   width: 60%; }
@@ -286,7 +322,7 @@ form input {
 
 .inventoryItem {
   padding-top: 10px;
-  margin: 40px 0;
+  margin-top: 40px;
   border: 1px solid rgba(0, 0, 0, 0.2); }
 
 .inventoryItem p {
@@ -302,13 +338,9 @@ form input {
   height: 80vh;
   overflow: scroll;
   margin: 20px 0;
-  /* align-content: space-evenly; */ }
+  align-content: start; }
 
 .product {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   height: 300px;
   width: 50%; }
 
@@ -320,7 +352,7 @@ form input {
   object-fit: contain; }
 
 .cart {
-  margin: 20px;
+  margin: 20px 0 20px 20px;
   width: 50%;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -334,7 +366,7 @@ form input {
 
 .cartItems {
   overflow: scroll;
-  height: 65vh; }
+  height: auto; }
 
 .cartItem {
   display: flex;
@@ -351,3 +383,18 @@ form input {
   background: none;
   border: none;
   height: 20px; }
+
+@media (max-width: 730px) {
+  .posContainer {
+    display: block; }
+  .cart {
+    margin: 20px 0;
+    height: 94vh; }
+  .products {
+    height: auto;
+    overflow: none; }
+  .cart,
+  .products {
+    width: 100%; }
+  .product {
+    justify-content: start; } }

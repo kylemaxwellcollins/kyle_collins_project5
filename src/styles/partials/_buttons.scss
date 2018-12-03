@@ -2,9 +2,9 @@
   @include primaryFont(18);
   background: $accent;
   color: $white-shade;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   &--general {
     // background: linear-gradient(#13547a 0%, #186d9e 100%);
-    border: 1px solid rgba(0, 0, 0, 0.2);
     color: white;
     padding: 5px 20px;
     &:disabled {
@@ -20,6 +20,8 @@
   &--add {
     width: 100%;
     border-top: none;
-    
+  }
+  &--login{
+    margin-top: 20px;
   }
 }

@@ -1,0 +1,90 @@
+.posContainer {
+  display: flex;
+}
+
+.products {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  height: 80vh;
+  overflow: scroll;
+  margin: 20px 0;
+  align-content: start;
+}
+
+.product {
+  height: 300px;
+  width: 50%;
+}
+
+.product p {
+  margin: 0;
+}
+
+.productImage {
+  height: 50%;
+  object-fit: contain;
+}
+
+// CART
+
+.cart {
+  margin: 20px 0 20px 20px;
+  width: 50%;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 80vh;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 94%;
+}
+
+.cartItems {
+  overflow: scroll;
+  height: auto;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+}
+
+.cartItem p {
+  margin: 0;
+}
+
+.cartItem p:first-of-type {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.deleteFromCart {
+  background: none;
+  border: none;
+  height: 20px;
+}
+
+@media (max-width: 730px) {
+  .posContainer {
+    display: block;
+  }
+  .cart {
+    margin: 20px 0;
+    height: 94vh;
+  }
+  .products {
+    height: auto;
+    overflow: none;
+  }
+  .cart,
+  .products {
+    width: 100%;
+  }
+  .product {
+    justify-content: start;
+  }
+}
