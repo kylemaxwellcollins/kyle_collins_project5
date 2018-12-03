@@ -1,0 +1,39 @@
+.cart {
+  margin: 20px;
+  width: 50%;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 80vh;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 94%;
+}
+
+.cartItems {
+  overflow: scroll;
+  height: 65vh;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+}
+
+.cartItem p {
+  margin: 0;
+}
+
+.cartItem p:first-of-type {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.deleteFromCart {
+  background: none;
+  border: none;
+  height: 20px;
+}

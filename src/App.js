@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from "./Components/firebase";
-import "./App.css";
+import "./styles/App.css";
 import Home from "./Components/Home";
 import Header from "./Components/Header";
 import Inventory from "./Components/Inventory";
@@ -48,8 +48,6 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    // If inputs are blank, show error message
-
     dbRef.push(this.state.formState);
 
     this.setState({
@@ -79,7 +77,7 @@ class App extends Component {
     // cartItem = cartItems[e.target.id]
     // cartItems[e.target.id] = item
 
-    prices.push(parseInt(item.itemPrice));
+    prices.push(parseFloat(item.itemPrice).toFixed(2) * 1);
 
     const total = this.state.cartPrices.reduce(
       (a, b) => a + b,
@@ -89,14 +87,21 @@ class App extends Component {
     const updateInventory = Object.assign({}, this.state.inventoryItems);
     updateInventory[e.target.id].itemQuantity--;
 
+    const totalFormatted = new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "CAD"
+    })
+      .format(total)
+      .replace(",", ".");
+
     this.setState(
       {
         inventoryItems: updateInventory,
         cartState: cartItems,
         cartPrices: prices,
-        cartTotal: total
-      }
-      // () => console.log(this.state.cartState)
+        cartTotal: totalFormatted
+      },
+      () => console.log(this.state.cartPrices)
     );
   };
 
@@ -106,9 +111,9 @@ class App extends Component {
     dbRef.update(this.state.inventoryItems);
     this.setState({
       cartState: [],
+      cartPrices: [],
       cartTotal: ""
     });
-    // console.log(this.state.inventoryItems)
   };
 
   render() {

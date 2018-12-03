@@ -1,0 +1,52 @@
+$black-shade: #171717;
+$white-shade: #fafafa;
+$grey-shade: #e0e0e0;
+$accent: #195b7e;
+
+@mixin primaryFont($size) {
+  font-family: "Oswald", sans-serif;
+  color: $black-shade;
+  font-size: $size * 1px;
+  font-size: ($size / 10) * 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@mixin secondaryFont($size) {
+  font-family: "Cabin", Sans-Serif;
+  color: $black-shade;
+  font-size: $size * 1px;
+  font-size: ($size / 10) * 1rem;
+  line-height: 32px;
+}
+
+.App {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 1600px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.heading {
+  @include primaryFont(40);
+  color: $white-shade;
+}
+
+.subHeading {
+  @include primaryFont(25);
+  &--nav {
+    @include primaryFont(18);
+    color: $white-shade;
+  }
+  &--product {
+    @include primaryFont(18);
+  }
+}
+
+p {
+  @include secondaryFont(18);
+  margin: 0;
+}

@@ -1,0 +1,25 @@
+.btn {
+  @include primaryFont(18);
+  background: $accent;
+  color: $white-shade;
+  &--general {
+    // background: linear-gradient(#13547a 0%, #186d9e 100%);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 5px 20px;
+    &:disabled {
+      background: lightgray;
+    }
+  }
+  &--remove {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 5px 0;
+  }
+  &--add {
+    width: 100%;
+    border-top: none;
+    
+  }
+}

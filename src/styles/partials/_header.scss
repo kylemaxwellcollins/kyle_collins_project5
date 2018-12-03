@@ -1,0 +1,30 @@
+header {
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+.headerContainer {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header ul {
+  padding: 0;
+  margin: 0;
+}
+
+header li {
+  list-style: none;
+  display: inline-block;
+}
+
+header a {
+  padding: 20px;
+  text-decoration: none;
+  color: $white-shade;
+}
+
+header h1 a {
+  padding: 0;
+}

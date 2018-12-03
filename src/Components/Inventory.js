@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 class Inventory extends Component {
-  
   render() {
     return (
       <div className="wrapper">
@@ -16,7 +15,6 @@ class Inventory extends Component {
             id="itemName"
             className="itemName"
             placeholder="Item Name"
-            required
           />
 
           <label className="visuallyhidden" htmlFor="itemPrice">
@@ -32,7 +30,6 @@ class Inventory extends Component {
             min="1"
             step=".01"
             pattern="^\d*(\.\d{0,2})?$"
-            required
           />
 
           <label className="visuallyhidden" htmlFor="itemQuantity">
@@ -45,7 +42,6 @@ class Inventory extends Component {
             id="itemQuantity"
             className="itemQuantity"
             placeholder="Quantity"
-            required
           />
 
           <label className="visuallyhidden" htmlFor="itemDescription">
@@ -72,18 +68,22 @@ class Inventory extends Component {
             placeholder="Image"
           />
 
-          <input className="addItem" type="submit" value="Add Item" />
+          <input className="btn btn--add" type="submit" value="Add Item" />
         </form>
         <section className="inventoryContainer">
           {Object.entries(this.props.inventoryItems).map(item => {
             return (
               <div key={item[0]} className="inventoryItem ">
-                <h2>{item[1].itemName}</h2>
+                <h2 className="subHeading">{item[1].itemName}</h2>
                 <p>Price: ${item[1].itemPrice}</p>
                 <p>Quantity: {item[1].itemQuantity}</p>
                 <p>Description: {item[1].itemDescription}</p>
                 <p>Image: {item[1].itemImage}</p>
-                <button className="removeItem" id={item[0]} onClick={this.props.removeItem}>
+                <button
+                  className="btn btn--remove"
+                  id={item[0]}
+                  onClick={this.props.removeItem}
+                >
                   Remove Item
                 </button>
               </div>

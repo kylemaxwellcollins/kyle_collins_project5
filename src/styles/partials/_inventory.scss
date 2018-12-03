@@ -1,0 +1,38 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px auto 0;
+}
+
+form input {
+  @include secondaryFont(18);
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.itemName {
+  width: 60%;
+}
+
+.itemPrice,
+.itemQuantity {
+  width: 20%;
+  border-left: none;
+}
+
+.itemDescription,
+.itemImage {
+  width:100%;
+  border-top: none;
+}
+
+.inventoryItem {
+  padding-top: 10px;
+  margin: 40px 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.inventoryItem p {
+  overflow: scroll;
+}
+

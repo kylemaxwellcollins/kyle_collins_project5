@@ -19,10 +19,11 @@ class Pos extends Component {
                       src={item.itemImage}
                       alt={item.itemDescription}
                     />
-                    <h2>{item.itemName}</h2>
+                    <h2 className="subHeading--product">{item.itemName}</h2>
                     <p>Price: ${item.itemPrice}</p>
                     <p>Inventory: {item.itemQuantity}</p>
                     <button
+                      className="btn btn--general"
                       id={id}
                       onClick={this.props.addToCart}
                       disabled={
@@ -38,7 +39,7 @@ class Pos extends Component {
               })}
             </section>
             <section className="cart">
-              <h1>Cart</h1>
+              <h2 className="subHeading">Cart</h2>
               <div className="cartContainer">
                 <div className="cartItems">
                   {this.props.cartState.map(item => {
@@ -57,8 +58,10 @@ class Pos extends Component {
                   })}
                 </div>
                 <div className="process">
-                  <p className="total">total: ${this.props.cartTotal}</p>
-                  <button onClick={this.props.process}>Process</button>
+                  <p className="total">Total: {this.props.cartTotal}</p>
+                  <button className="btn btn--general" onClick={this.props.process}>
+                    Process
+                  </button>
                 </div>
               </div>
             </section>
